@@ -10,6 +10,7 @@ ProjectC/[Bb]uild/
 ProjectC/[Bb]uilds/
 ProjectC/[Ll]ogs/
 ProjectC/[Uu]ser[Ss]ettings/
+ProjectC/[Aa]ssets/[Tt]ests/[Oo]utputs/
 *.log
 
 # MemoryCaptures can get excessive in size.
