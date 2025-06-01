@@ -1,0 +1,19 @@
+public enum ComponentTag
+{
+    Durable,
+    Fragile,
+    Magical,
+    Enchanted,
+    Elemental,
+    Heavy,
+    Light,
+    Sharp,
+    Blunt,
+    Brutal,
+    Ethereal,
+    Draconian,
+    Rebirth,
+    Pure,
+    Mystic,
+    Cursed,
+}

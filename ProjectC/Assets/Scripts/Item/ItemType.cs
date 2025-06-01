@@ -1,6 +1,6 @@
 public enum ItemType
 {
-    Weapon,
-    Potion,
-    Trinket
+    Equipment,
+    Resource,
+    Material,
 }
