@@ -3,21 +3,22 @@ using System.Collections.Generic;
 
 public class ComponentFactory
 {
-    public static Component CreateComponent(ComponentType type, MaterialItem material, ResourceItem bonusResource = null)
+    public static Component CreateComponent(ComponentType type, MaterialType material, int Level = 1, ResourceType? bonusResource = null)
     {
 
-        var myComponent = new Component(type, new List<ComponentTag>(), $"{material.Name} {type}");
+        var myComponent = new Component(type, new List<ComponentTag>(), $"{material} {type}", Level);
         myComponent.addTag(GetComponentTagFromMaterial(material));
         if (bonusResource != null)
         {
-            myComponent.addTag(GetComponentTagFromBonusResource(bonusResource));
+            myComponent.addTag(GetComponentTagFromBonusResource(bonusResource?? throw new ArgumentNullException(nameof(bonusResource))));
         }
+        myComponent.MaterialType = material;
         return myComponent;
     }
 
-    private static ComponentTag GetComponentTagFromMaterial(MaterialItem material)
+    private static ComponentTag GetComponentTagFromMaterial(MaterialType material)
     {
-        return material.MaterialType switch
+        return material switch
         {
             MaterialType.Iron    => ComponentTag.Heavy,
             MaterialType.Steel   => ComponentTag.Durable,
@@ -28,9 +29,9 @@ public class ComponentFactory
         };
     }
     
-    private static ComponentTag GetComponentTagFromBonusResource(ResourceItem resource)
+    private static ComponentTag GetComponentTagFromBonusResource(ResourceType resource)
     {
-        return resource.ResourceType switch
+        return resource switch
         {
             ResourceType.Goblin_Heart      => ComponentTag.Brutal,
             ResourceType.Faery_Dust        => ComponentTag.Ethereal,

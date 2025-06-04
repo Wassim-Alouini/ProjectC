@@ -119,6 +119,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &47091349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 47091350}
+  - component: {fileID: 47091351}
+  m_Layer: 0
+  m_Name: MaterialLibrary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &47091350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47091349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &47091351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47091349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7a70fe5f6e6a14b8d51165c7ef7e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Materials:
+  - {fileID: 2100000, guid: 36ef6d9319fc06d44aaf5eaa7caf9f3b, type: 2}
+  - {fileID: 2100000, guid: 46e16200434a52f4b89228caf617ee7e, type: 2}
+  - {fileID: 2100000, guid: d655fe4c78630bb47b26d5a1f2b8a484, type: 2}
+  - {fileID: 2100000, guid: 9099c1df30851e24eb38bb8df9da1f9f, type: 2}
+  - {fileID: 2100000, guid: 4c0440dc3a37df04d82dde6aa15ee6b4, type: 2}
 --- !u!1 &1237003688
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +261,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1237684948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237684949}
+  - component: {fileID: 1237684950}
+  m_Layer: 0
+  m_Name: ItemPrefabLibrary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1237684949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237684948}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1237684950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237684948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81601234b5d2b334d89667504753b27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemPrefabs:
+  - {fileID: 919132149155446097, guid: 47b40d3092842cb488e471e85cc3a209, type: 3}
+  - {fileID: 919132149155446097, guid: 306af070c29c44c44a152cbdbfabd7ad, type: 3}
+  - {fileID: 919132149155446097, guid: 2aaef43892b3a4a4096ff8f069731425, type: 3}
+  - {fileID: 919132149155446097, guid: c5c2119d0ba05a8469daf4c9167e57eb, type: 3}
+  - {fileID: 919132149155446097, guid: 81615466fd7aa064689fc04a7a9ae144, type: 3}
+  - {fileID: 919132149155446097, guid: eb4826e4c92f6dd468fa63754a3ba1c1, type: 3}
+  - {fileID: 919132149155446097, guid: 144ddf3aa1f29534684ef4d7678fd09c, type: 3}
+  - {fileID: 919132149155446097, guid: 3dbe5de170f8e95449ec7597c0ecdb67, type: 3}
+  - {fileID: 919132149155446097, guid: f1120be516963e74d8f3d5166b9a5f87, type: 3}
+  - {fileID: 2137868565768398550, guid: 03458cd06bb86b34e9b25c60c9a46b15, type: 3}
+  - {fileID: 919132149155446097, guid: ebfb15b811675204ba497fa4e51cb2de, type: 3}
+  - {fileID: 3061064879764393931, guid: b9fab8341750628489473820b477d28d, type: 3}
+  - {fileID: 3061064879764393931, guid: 63fda732c5178e342addf02d01b0f684, type: 3}
+  - {fileID: 3061064879764393931, guid: 1b943ee5b08b4e940bc49bd3388f15b3, type: 3}
+  - {fileID: 3061064879764393931, guid: c3b7fc3534014e64f98ed150bafe436e, type: 3}
+  - {fileID: 3061064879764393931, guid: b1561b31290bec14991dd6f8bcc0f4c0, type: 3}
 --- !u!1 &1276392215
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,9 +419,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1956617458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1956617459}
+  - component: {fileID: 1956617460}
+  m_Layer: 0
+  m_Name: CraftingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1956617459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956617458}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1956617460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956617458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca845707a8fee74b9fd187834250fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1237003691}
   - {fileID: 1276392217}
+  - {fileID: 1956617459}
+  - {fileID: 1237684949}
+  - {fileID: 47091350}

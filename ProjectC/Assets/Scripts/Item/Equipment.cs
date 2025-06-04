@@ -3,11 +3,14 @@ using System.Collections.Generic;
 
 public class Equipment : Item
 {
+    public EquipmentType Type { get; private set; }
+    public List<Component> Components { get; set; }
     public List<ComponentTag> Tags { get; private set; }
 
-    public Equipment(List<ComponentTag> tags, string name)
+    public Equipment(List<ComponentTag> tags,EquipmentType type, string name)
     {
         Tags = tags;
+        Type = type;
         Name = name ?? throw new ArgumentException(nameof(name), "Name cannot be null.");
     }
 
