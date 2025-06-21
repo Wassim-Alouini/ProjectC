@@ -7,7 +7,18 @@ public class EquipmentFactory
         List<ComponentTag> tags = new List<ComponentTag>();
         foreach (var component in components)
         {
-            tags.AddRange(component.Tags);
+            foreach (var tag in component.Tags)
+            {
+                if (tags.Contains(tag))
+                {
+                    continue;
+                }
+                else
+                {
+                    tags.Add(tag);
+                }
+            }
+            
         }
         Equipment equipment = new Equipment(tags,type,name);
         equipment.Components = components;
