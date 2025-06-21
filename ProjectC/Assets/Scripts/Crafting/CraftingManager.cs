@@ -5,35 +5,35 @@ using UnityEngine;
 
 public class CraftingManager : MonoBehaviour
 {
-    void Start()
-    {
-        Component myBlade = ComponentFactory.CreateComponent(
-            ComponentType.Blade,
-            MaterialType.Steel,
-            2
-        );
-        Component myGuard = ComponentFactory.CreateComponent(
-            ComponentType.Guard,
-            MaterialType.Mythril,
-            2
-        );
-        Component myHandle = ComponentFactory.CreateComponent(
-            ComponentType.Handle,
-            MaterialType.Wood,
-            3
-        );
-        List<Component> myComponents = new List<Component>
-        {
-            myBlade,
-            myGuard,
-            myHandle
-        };
-        Equipment myEquipment = EquipmentFactory.CreateEquipmentItem(
-            myComponents, EquipmentType.Sword, "Excalibur"
-        );
-        MaterialItem myMaterial = new MaterialItem(MaterialType.Steel, "Steel Bar", 25, 100);
-        InstantiateItem(myMaterial);
-    }
+    // void Start()
+    // {
+    //     Component myBlade = ComponentFactory.CreateComponent(
+    //         ComponentType.Blade,
+    //         MaterialType.Steel,
+    //         2
+    //     );
+    //     Component myGuard = ComponentFactory.CreateComponent(
+    //         ComponentType.Guard,
+    //         MaterialType.Mythril,
+    //         2
+    //     );
+    //     Component myHandle = ComponentFactory.CreateComponent(
+    //         ComponentType.Handle,
+    //         MaterialType.Wood,
+    //         3
+    //     );
+    //     List<Component> myComponents = new List<Component>
+    //     {
+    //         myBlade,
+    //         myGuard,
+    //         myHandle
+    //     };
+    //     Equipment myEquipment = EquipmentFactory.CreateEquipmentItem(
+    //         myComponents, EquipmentType.Sword, "Excalibur"
+    //     );
+    //     MaterialItem myMaterial = new MaterialItem(MaterialType.Steel, "Steel Bar", 25, 100);
+    //     InstantiateItem(myMaterial);
+    // }
     void InstantiateEquipment(Equipment equipment)
     {
         var components = equipment.Components;
