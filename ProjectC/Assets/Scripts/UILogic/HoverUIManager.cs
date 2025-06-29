@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,28 +62,29 @@ public class HoverUIManager : MonoBehaviour
         NameText.text = info.DisplayName;
         DescriptionText.text = info.Description;
         ActionText.text = info.Action;
-        HoverUICanvasGroup.transform.position = GetPlacingPosition(mono.GetComponent<BoxCollider>());//mono.transform.position + Vector3.up;
+        Collider col = mono.GetComponent<Collider>();
+        HoverUICanvasGroup.transform.position = GetPlacingPosition(col);
+        Vector3 size = col.bounds.size;
+
+        float scaleFactor = Mathf.Clamp(size.magnitude * 0.15f, 0.5f, 1.5f); // tune constants
+        HoverUICanvasGroup.transform.localScale = scaleFactor * new Vector3(0.01f, 0.01f, 0.01f);
         ShowUI();
     }
 
-    public Vector3 GetPlacingPosition(BoxCollider collider)
+    public Vector3 GetPlacingPosition(Collider collider)
     {
         Bounds bounds = collider.bounds;
-        var height = bounds.size.y;
+        Vector3 topCenter = new Vector3(bounds.center.x, bounds.max.y, bounds.center.z);
+
+        float verticalOffset = 0.2f;
+        return topCenter + Vector3.up * verticalOffset;
 
 
-        if (height <= 3)
-        {
-            return bounds.center + Vector3.up * bounds.extents.y + Vector3.up * 0.5f;
-        }
-        else
-        {
-            return bounds.center + mainCamera.transform.right * bounds.extents.x + Vector3.right;
-        }
     }
 
     public void HideHoverUI()
     {
+        
         HideUI();
     }
 
@@ -121,6 +123,7 @@ public class HoverUIManager : MonoBehaviour
             NameText.text = "";
             DescriptionText.text = "";
             ActionText.text = "";
+            HoverUICanvasGroup.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
         }
     }
 

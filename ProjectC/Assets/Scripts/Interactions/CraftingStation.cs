@@ -2,38 +2,27 @@ using UnityEngine;
 
 public class CraftingStation : MonoBehaviour, IInteractable, ILookable
 {
-    public Material StationMaterial;
-    private Color BaseColor;
-    public Color LookColor;
+    private Material StationMaterial;
+
     void Awake()
     {
         StationMaterial = GetComponentInChildren<MeshRenderer>().material;
-        BaseColor = StationMaterial.color;
     }
 
     public void Interact(PlayerInteractor interactor)
     {
-        //Debug.Log("Interacting with" + name);
+        
     }
-
     public void OnLookEnter(PlayerInteractor interactor)
     {
-        StationMaterial.color = LookColor;
-        //Display Hover UI
         HoverUIManager.Instance.DisplayHoverUIOnILookable(this);
-       //Debug.Log("Looking at" + name);
+        StationMaterial.SetFloat("_HighlightStrength", 0.4f);
     }
-
     public void OnLookExit(PlayerInteractor interactor)
     {
-        StationMaterial.color = BaseColor;
-        //Hide Hover UI
         HoverUIManager.Instance.HideHoverUI();
-        //Debug.Log("Stopped looking at" + name);
+        StationMaterial.SetFloat("_HighlightStrength", 0f);
     }
-
-
-    //Waiting to find a better solution not involving writing this piece of code on every ILookable
     private void Reset()
     {
         if (GetComponent<HoverInfo>() == null)
