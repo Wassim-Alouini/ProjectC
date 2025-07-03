@@ -16,15 +16,12 @@ public class InteractionUI : MonoBehaviour
     IEnumerator LogCanvasSize()
     {
         yield return new WaitForEndOfFrame();
-
         var root = myDocument.rootVisualElement;
 
         float width = root.resolvedStyle.width;
         float height = root.resolvedStyle.height;
-
         float ratio = height / width;
 
         transform.localScale = new Vector3(xScale, xScale * ratio);
     }
-
 }

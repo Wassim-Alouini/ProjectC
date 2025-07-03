@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class Inventory
 {
+
+    public event Action OnInventoryChanged;
     private static Inventory _instance;
     public static Inventory Instance
     {
@@ -33,6 +35,7 @@ public class Inventory
             throw new InvalidOperationException("Inventory is full.");
         }
         Items.Add(item);
+        NotifyChange();
     }
     public void RemoveItemAt(int index)
     {
@@ -41,16 +44,30 @@ public class Inventory
             throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
         }
         Items.RemoveAt(index);
+        NotifyChange();
+        
     }
     public void ClearInventory()
     {
         Items.Clear();
+        NotifyChange();
     }
 
     private Inventory()
     {
         Items = new List<Item>();
         Capacity = 0;
+    }
+
+    public void SortInventory()
+    {
+        Items.Sort();
+        NotifyChange();
+    }
+
+    private void NotifyChange()
+    {
+        OnInventoryChanged?.Invoke();
     }
     
     #if UNITY_EDITOR

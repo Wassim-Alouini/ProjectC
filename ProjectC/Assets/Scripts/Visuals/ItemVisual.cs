@@ -23,7 +23,7 @@ public class ItemVisual : MonoBehaviour
         {
             lookupName = materialItem.MaterialType.ToString();
         }
-        Debug.Log($"Looking up prefab for item: {lookupName}");
+        //Debug.Log($"Looking up prefab for item: {lookupName}");
         return ItemPrefabLibrary.Instance.ItemPrefabs.First(item => item.name == lookupName);
     }
 

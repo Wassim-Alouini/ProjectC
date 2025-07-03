@@ -6,6 +6,7 @@ using UnityEngine;
 public class CraftingManager : MonoBehaviour
 {
     public GameObject PickupItemPrefab;
+    public GameObject PreviewPrefab;
     void Start()
     {
         Component myBlade = ComponentFactory.CreateComponent(
@@ -39,6 +40,7 @@ public class CraftingManager : MonoBehaviour
         DropPickupItem(myHandle);
         DropPickupItem(myMaterial);
 
+
     }
 
     void DropPickupItem(Item item)
@@ -48,30 +50,5 @@ public class CraftingManager : MonoBehaviour
         pickupItem.sourceItem = item;
         pickupItem.InstantiatePickupItem();
     }
-    // void InstantiateEquipment(Equipment equipment)
-    // {
-    //     var components = equipment.Components;
-    //     GameObject prefab = Instantiate(ItemVisual.GetItemPrefab(equipment));
-    //     foreach (var component in components)
-    //     {
-    //         GameObject prefabObject = Instantiate(ItemVisual.GetItemPrefab(component), prefab.transform.Find(component.Type.ToString()));
-    //         prefabObject.GetComponentInChildren<MeshRenderer>().material = MaterialLibrary.Instance.Materials.First(item => item.name == component.MaterialType.ToString());
-    //     }
-    // }
-
-    // void InstantiateComponent(Component component)
-    // {
-    //     GameObject prefab = Instantiate(ItemVisual.GetItemPrefab(component));
-    //     prefab.GetComponentInChildren<MeshRenderer>().material = MaterialLibrary.Instance.Materials.First(item => item.name == component.MaterialType.ToString());
-    // }
-
-    // void InstantiateItem(Item item)
-    // {
-    //     if (item is Equipment or Component)
-    //     {
-    //         throw new ArgumentException("Use InstantiateComponent or InstantiateEquipment To spawn this");
-    //     }
-    //     Instantiate(ItemVisual.GetItemPrefab(item));
-    // }
 
 }
