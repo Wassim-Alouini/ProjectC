@@ -7,36 +7,18 @@ public class CameraControl : MonoBehaviour
     public float SensY = 100f;
     public Transform Orientation;
 
-    float xRotation;
-    float yRotation;
+    private float xRotation;
+    private float yRotation;
+    private Vector2 lookInput;
 
-    private PlayerInputActions inputActions;
-
-    private void Awake()
-    {
-        inputActions = new PlayerInputActions();
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
-
-    void Start()
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    void Update()
+    private void Update()
     {
-        Vector2 lookInput = inputActions.Player.Look.ReadValue<Vector2>();
-
         float mouseX = lookInput.x * Time.deltaTime * SensX;
         float mouseY = lookInput.y * Time.deltaTime * SensY;
 
@@ -47,5 +29,9 @@ public class CameraControl : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         Orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
-}
 
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        lookInput = context.ReadValue<Vector2>();
+    }
+}

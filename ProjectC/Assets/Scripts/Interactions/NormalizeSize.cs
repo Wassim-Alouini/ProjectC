@@ -8,7 +8,7 @@ public class NormalizeSize : MonoBehaviour
     void Start()
     {
         Normalize();
-        Debug.LogWarning("Normalizing");
+        //Debug.LogWarning("Normalizing");
     }
 
     void Normalize()

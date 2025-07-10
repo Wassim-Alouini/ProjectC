@@ -2,65 +2,54 @@ using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
 {
-    Camera mainCamera;
-    ILookable currentLookingTarget;
-    public float InteractionRange;
+    private Camera mainCamera;
+    private ILookable currentLookingTarget;
+
+    public float InteractionRange = 3f;
     public LayerMask InteractableLayer;
 
-    private PlayerInputActions inputActions;
-
-
-    void Awake()
+    private void Awake()
     {
         mainCamera = Camera.main;
-        inputActions = new PlayerInputActions();
-        inputActions.Player.Interact.performed += ctx => TryInteract();
     }
 
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
-
-    void Update()
+    private void Update()
     {
         TryLook();
     }
 
-    public void TryInteract()
+    public void OnInteract(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, InteractionRange, InteractableLayer))
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Performed)
         {
-            IInteractable myInteractable = hit.collider.GetComponent<IInteractable>();
-            if (myInteractable is null)
-            {
-                return;
-            }
-            myInteractable.Interact(this);
+            TryInteract();
+        }
+
+    }
+
+    private void TryInteract()
+    {
+        //Debug.Log("TryInteract");
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out RaycastHit hit, InteractionRange, InteractableLayer))
+        {
+            var interactable = hit.collider.GetComponent<IInteractable>();
+            interactable?.Interact(this);
         }
     }
-    public void TryLook()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, InteractionRange, InteractableLayer))
-        {
-            ILookable myLookable = hit.collider.GetComponent<ILookable>();
 
-            if (myLookable != null)
+    private void TryLook()
+    {
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out RaycastHit hit, InteractionRange, InteractableLayer))
+        {
+            var lookable = hit.collider.GetComponent<ILookable>();
+            if (lookable != null)
             {
-                if (myLookable != currentLookingTarget)
+                if (lookable != currentLookingTarget)
                 {
                     currentLookingTarget?.OnLookExit(this);
-                    currentLookingTarget = myLookable;
+                    currentLookingTarget = lookable;
                     currentLookingTarget.OnLookEnter(this);
                 }
-
                 return;
             }
         }
@@ -71,5 +60,4 @@ public class PlayerInteractor : MonoBehaviour
             currentLookingTarget = null;
         }
     }
-
 }
