@@ -62,12 +62,14 @@ public class PickupItem : MonoBehaviour, IInteractable, ILookable
     {
         HoverUIManager.Instance.DisplayHoverUIOnILookable(this);
         HighlightInteractable();
+        PlayerCursor.Instance.FocusedCursor();
     }
 
     public void OnLookExit(PlayerInteractor interactor)
     {
         HoverUIManager.Instance.HideHoverUI();
         UnHighlightInteractable();
+        PlayerCursor.Instance.DefaultCursor();
     }
 
     private void Reset()

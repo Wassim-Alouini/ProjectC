@@ -5,11 +5,26 @@ public class InventoryUI : MonoBehaviour
 
     public GameObject InventoryUIContainer;
     public GameObject InventoryIconPrefab;
+    public GameObject InfoBubbleObject;
+    private InfoBubble infoBubble;
+
+
+    public static InventoryUI Instance;
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         Inventory.Instance.OnInventoryChanged += RefreshInventoryUI;
         InitInventory();
+        infoBubble = InfoBubbleObject.GetComponent<InfoBubble>();
+
     }
     public static void InitInventory()
     {
@@ -35,6 +50,19 @@ public class InventoryUI : MonoBehaviour
             icon.GetComponent<ItemIcon>().SourceItem = item;
         }
     }
+    public void DisplayInfoBubble(Item sourceItem)
+    {
+        infoBubble.SourceItem = sourceItem;
+        infoBubble.RefreshDisplay();
+        InfoBubbleObject.SetActive(true);
+    }
+    public void HideInfoBubble()
+    {
+        InfoBubbleObject.SetActive(false);
+    }
+
+
+    
 
 
 

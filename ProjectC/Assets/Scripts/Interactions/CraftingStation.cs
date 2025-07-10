@@ -17,11 +17,13 @@ public class CraftingStation : MonoBehaviour, IInteractable, ILookable
     {
         HoverUIManager.Instance.DisplayHoverUIOnILookable(this);
         StationMaterial.SetFloat("_HighlightStrength", 0.4f);
+        PlayerCursor.Instance.FocusedCursor();
     }
     public void OnLookExit(PlayerInteractor interactor)
     {
         HoverUIManager.Instance.HideHoverUI();
         StationMaterial.SetFloat("_HighlightStrength", 0f);
+        PlayerCursor.Instance.DefaultCursor();
     }
     private void Reset()
     {

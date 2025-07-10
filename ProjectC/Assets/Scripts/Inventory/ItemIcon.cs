@@ -1,13 +1,39 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemIcon : MonoBehaviour
+public class ItemIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+
+
     public Item SourceItem;
     public RawImage rawImage;
 
     private Coroutine _updateRoutine;
+
+    public Image backgroundImage;
+
+    public Color normalColor = new Color(255, 255, 255, 0.8f);
+    public Color hoverColor = new Color(1f, 1f, 0.5f);
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (backgroundImage != null)
+            backgroundImage.color = hoverColor;
+        PlayerCursor.Instance.FocusedCursor();
+        InventoryUI.Instance.DisplayInfoBubble(SourceItem);
+
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (backgroundImage != null)
+            backgroundImage.color = normalColor;
+        PlayerCursor.Instance.DefaultCursor();
+        InventoryUI.Instance.HideInfoBubble();
+    }
 
     private void Start()
     {
